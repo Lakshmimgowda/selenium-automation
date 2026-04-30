@@ -19,16 +19,16 @@ driver.maximize_window()
 # # phone = driver.find_element(By.XPATH,"//input[@id='phone']")
 # # phone.send_keys("7676918212")
 # # time.sleep(2)
-# #
+
 # address = driver.find_element(By.ID,"textarea")
 # address.send_keys("#949 kuvempu rd nagarbhavi")
 # time.sleep(2)
-# #
+
 # radio = driver.find_element(By.XPATH,"//input[@id='female']")
 # radio.click()
 # time.sleep(2)
-# #
-# # #to select single checkbox
+
+#to select single checkbox
 # Single_checkbox = driver.find_element(By.XPATH,"//input[@id='monday']")
 # Single_checkbox.click()
 # time.sleep(2)
@@ -39,20 +39,20 @@ driver.maximize_window()
 #     if not i.is_selected():
 #         i.click()
 #     time.sleep(5)
-# #
-# # #to select the dropdown
+
+#to select the dropdown
 # dropdown = Select(driver.find_element(By.ID,"country"))
 # dropdown.select_by_value("india")
 # time.sleep(5)
 # print(dropdown.first_selected_option.text)
 # time.sleep(2)
-#
-# # #To scroll
-# # colors = driver.find_element(By.XPATH,"//label[contains(text(),'Color')]")
-# # driver.execute_script("arguments[0].scrollIntoView();",colors)
-# # time.sleep(2)
-# # print(colors.is_displayed())
-#
+
+# To scroll
+# colors = driver.find_element(By.XPATH,"//label[contains(text(),'Color')]")
+#driver.execute_script("arguments[0].scrollIntoView();",colors)
+#time.sleep(2)
+# print(colors.is_displayed())
+
 # colour = Select(driver.find_element(By.ID,"colors"))
 # colour.select_by_value("green")
 # print(colour.first_selected_option.text)
@@ -87,23 +87,35 @@ driver.maximize_window()
 # time.sleep(3)
 
 #dropdown calendar
-calendar2 = driver.find_element(By.XPATH, "//input[@id='txtDate']")
-calendar2.click()
-time.sleep(3)
-target_m = "Jan"
-target_y = "2025"
-target_d = 20
-
-month = Select(driver.find_element(By.CLASS_NAME,"ui-datepicker-month"))
-month.select_by_visible_text(target_m)
-time.sleep(3)
-
-year = Select(driver.find_element(By.CLASS_NAME,"ui-datepicker-year"))
-year.select_by_visible_text(target_y)
-time.sleep(3)
-
-date = driver.find_element(By.XPATH, f"//a[text()='{target_d}']").click()
-time.sleep(3)
+# calendar2 = driver.find_element(By.XPATH, "//input[@id='txtDate']")
+# calendar2.click()
+# time.sleep(3)
+# target_m = "Jan"
+# target_y = "2025"
+# target_d = 20
+#
+# month = Select(driver.find_element(By.CLASS_NAME,"ui-datepicker-month"))
+# month.select_by_visible_text(target_m)
+# time.sleep(3)
+#
+# year = Select(driver.find_element(By.CLASS_NAME,"ui-datepicker-year"))
+# year.select_by_visible_text(target_y)
+# time.sleep(3)
+#
+# date = driver.find_element(By.XPATH, f"//a[text()='{target_d}']").click()
+# time.sleep(3)
 
 # start and end range calendar
-start month = 
+start_date = driver.find_element(By.ID, "start-date")
+start_date.send_keys("01-20-2025")
+time.sleep(3)
+
+end_date = driver.find_element(By.ID, "end-date")
+end_date.send_keys("01-21-2025")
+time.sleep(3)
+
+submit = driver.find_element(By.XPATH, "//button[@class='submit-btn']")
+submit.click()
+
+result = driver.find_element(By.XPATH, "//div[@class='result']")
+print(result.text)
